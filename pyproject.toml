@@ -1,0 +1,75 @@
+[build-system]
+requires = ["uv_build>=0.9.3,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "psimod-validator"
+version = "0.1.0"
+description = "PSI-MOD validation and curation tools for quality control and data management"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Ralf Gabriels" }]
+keywords = [
+    "psi-mod",
+    "ontology",
+    "validation",
+    "curation",
+    "smiles",
+    "chemistry",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+
+dependencies = [
+    "pronto>=2.7.0",
+    "rdkit>=2023.0.0",
+    "pydantic>=2.0.0",
+    "click>=8.0.0",
+    "rich>=13.0.0",
+    "requests>=2.31.0",
+    "pyteomics>=4.6.0",
+]
+
+[project.scripts]
+psimod-validator = "psimod_validator.__main__:cli"
+
+[dependency-groups]
+dev = ["pytest>=7.0.0", "pytest-cov>=4.0.0", "ruff>=0.1.0", "ty"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "COM812",  # trailing comma — conflicts with formatter
+    "TC",      # TYPE_CHECKING restructuring — not warranted
+    "BLE001",  # blind Exception catch — intentional in rule/fixer error paths
+    "PLR2004", # magic value comparisons
+    "TRY300",  # move return to else block — minor style
+    "PERF401", # list.extend — minor style
+    "FBT001",  # boolean positional arg — Click callback pattern
+    "FBT002",  # boolean default value — Click callback pattern
+    "D107",    # missing __init__ docstring — class docstring covers it
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN", "D", "S101", "PLR2004"]
+"src/psimod_validator/__main__.py" = [
+    "PLR0913",
+] # Click callback with many options
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=psimod_validator --cov-report=term-missing"
+
+[tool.ty.environment]
+python-version = "3.13"
