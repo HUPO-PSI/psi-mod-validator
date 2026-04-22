@@ -1,5 +1,5 @@
 [build-system]
-requires = ["uv_build>=0.9.3,<0.10.0"]
+requires = ["uv_build>=0.9.3,<0.12.0"]
 build-backend = "uv_build"
 
 [project]
@@ -59,8 +59,8 @@ ignore = [
     "FBT001",  # boolean positional arg — Click callback pattern
     "FBT002",  # boolean default value — Click callback pattern
     "D107",    # missing __init__ docstring — class docstring covers it
-    "D203",    # Incorrect blank line before class
-    "D212",    # Multi-line docstring should start on the line after the opening quotes
+    "D203",    # blank line before class — conflicts with D211
+    "D213",    # summary on second line — our code uses first-line summaries (D212 style)
 ]
 
 [tool.ruff.lint.per-file-ignores]
