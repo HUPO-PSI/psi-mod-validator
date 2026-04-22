@@ -47,9 +47,7 @@ class TestValidateAll:
     def test_valid_smiles_no_parse_error(self, obo_path):
         report = PsiModValidator(obo_path).validate_all()
         parse_errors = [
-            i
-            for i in report.errors
-            if i.mod_id == "MOD:00001" and "cannot parse" in i.message
+            i for i in report.errors if i.mod_id == "MOD:00001" and "cannot parse" in i.message
         ]
         assert parse_errors == []
 

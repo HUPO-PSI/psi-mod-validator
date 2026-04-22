@@ -121,17 +121,17 @@ def format_markdown(report: ValidationReport) -> str:
     ]
 
     if report.issues:
-        lines.extend([
-            "## Issues",
-            "",
-            "| Severity | ID | Category | Message |",
-            "|----------|-----|----------|---------|",
-        ])
+        lines.extend(
+            [
+                "## Issues",
+                "",
+                "| Severity | ID | Category | Message |",
+                "|----------|-----|----------|---------|",
+            ]
+        )
         for issue in report.sorted_issues:
             # Escape pipes in messages for markdown table compatibility
             msg = issue.message.replace("|", "\\|")
-            lines.append(
-                f"| {issue.severity.value} | {issue.mod_id} | {issue.category} | {msg} |"
-            )
+            lines.append(f"| {issue.severity.value} | {issue.mod_id} | {issue.category} | {msg} |")
 
     return "\n".join(lines)

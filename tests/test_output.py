@@ -40,6 +40,7 @@ def _fixable() -> Issue:
 # format_text
 # ---------------------------------------------------------------------------
 
+
 class TestFormatText:
     def test_header_present(self):
         report = _make_report()
@@ -76,6 +77,7 @@ class TestFormatText:
 # ---------------------------------------------------------------------------
 # format_json
 # ---------------------------------------------------------------------------
+
 
 class TestFormatJson:
     def test_valid_json(self):
@@ -118,6 +120,7 @@ class TestFormatJson:
 # ---------------------------------------------------------------------------
 # format_markdown
 # ---------------------------------------------------------------------------
+
 
 class TestFormatMarkdown:
     def test_has_header(self):

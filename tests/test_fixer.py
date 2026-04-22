@@ -24,6 +24,7 @@ def _issue_with_fix(**kwargs) -> Issue:
 # FixReport
 # ---------------------------------------------------------------------------
 
+
 class TestFixReport:
     def test_applied_count(self):
         report = FixReport(applied=[_fix(), _fix()])
@@ -42,6 +43,7 @@ class TestFixReport:
 # ---------------------------------------------------------------------------
 # apply_fixes
 # ---------------------------------------------------------------------------
+
 
 class TestApplyFixes:
     def test_empty_issues_no_changes(self, fresh_ontology):
@@ -98,6 +100,7 @@ class TestApplyFixes:
 # ---------------------------------------------------------------------------
 # write_obo
 # ---------------------------------------------------------------------------
+
 
 class TestWriteObo:
     def test_writes_valid_obo(self, fresh_ontology, tmp_path):

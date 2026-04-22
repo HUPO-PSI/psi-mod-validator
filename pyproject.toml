@@ -59,6 +59,8 @@ ignore = [
     "FBT001",  # boolean positional arg — Click callback pattern
     "FBT002",  # boolean default value — Click callback pattern
     "D107",    # missing __init__ docstring — class docstring covers it
+    "D203",    # Incorrect blank line before class
+    "D212",    # Multi-line docstring should start on the line after the opening quotes
 ]
 
 [tool.ruff.lint.per-file-ignores]

@@ -24,6 +24,7 @@ def _make_term(**kwargs) -> TermData:
 # MassConsistencyRule
 # ---------------------------------------------------------------------------
 
+
 class TestMassConsistencyRule:
     rule = MassConsistencyRule()
 
@@ -31,7 +32,7 @@ class TestMassConsistencyRule:
     _mol = parse_smiles("CC(=O)O")
     _comp = from_molecule(_mol)
     _exact_mass = _comp.mass()
-    _chemforma = to_chemforma(_comp)           # compact: "C2H4O2"
+    _chemforma = to_chemforma(_comp)  # compact: "C2H4O2"
     _psimod_formula = _to_psimod_formula(_chemforma)  # spaced: "C 2 H 4 O 2"
 
     def test_no_mol_no_issues(self):
@@ -94,6 +95,7 @@ class TestMassConsistencyRule:
 # _parse_formula_to_dict
 # ---------------------------------------------------------------------------
 
+
 class TestParseFormulaToDictfunction:
     def test_psimod_spaced_format(self):
         result = _parse_formula_to_dict("C 3 H 7 N 1 O 2")
@@ -118,6 +120,7 @@ class TestParseFormulaToDictfunction:
 # _formulas_match
 # ---------------------------------------------------------------------------
 
+
 class TestFormulasMatch:
     def test_same_compact(self):
         assert _formulas_match("C2H4O2", "C2H4O2")
@@ -135,6 +138,7 @@ class TestFormulasMatch:
 # ---------------------------------------------------------------------------
 # _to_psimod_formula
 # ---------------------------------------------------------------------------
+
 
 class TestToPsimodFormula:
     def test_compact_to_spaced(self):
